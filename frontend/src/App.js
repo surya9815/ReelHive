@@ -1,7 +1,11 @@
 // import logo from "./logo.svg";
-import "./App.css";
-import Home from "./pages/Home";
-import CategoryMovies from "./pages/CategoryMovies";
+// import "./App.css";
+import Home from "./pages/Home/Home";
+import CategoryMovies from "./pages/details/CategoryMovies";
+import SearchResult from "./pages/searchResult/SearchResult";
+import Footer from "./components/common/Footer";
+import Explore from "./pages/explore/Explore";
+import PageNotFound from "./pages/404/PageNotFound";
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom'
 import { routePath } from "./constants/route";
 

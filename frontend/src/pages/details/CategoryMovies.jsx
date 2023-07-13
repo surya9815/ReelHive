@@ -1,13 +1,15 @@
+import React from 'react'
+import "./style.scss"
+
 import { Box,Typography,styled,Divider } from '@mui/material'
 import { useEffect,useState } from 'react';
-import React from 'react'
-import Header from '../components/common/Header'
+import Header from '../../components/common/Header'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useLocation } from 'react-router-dom';
-import { POPULAR_API_URL,TOPRATED_API_URL,UPCOMING_API_URL, moviesType } from '../constants/constants';
-import MoviesList from '../components/MoviesList';
-import { categoryMovies } from '../services/api';
+import { POPULAR_API_URL,TOPRATED_API_URL,UPCOMING_API_URL, moviesType } from '../../constants/constants';
+import MoviesList from '../../components/MoviesList';
+import { categoryMovies } from '../../services/api';
 
 
 const responsive = {
