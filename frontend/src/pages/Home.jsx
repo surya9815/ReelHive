@@ -7,6 +7,8 @@ import { Box,styled } from '@mui/material'
 import Banner from '../components/Banner'
 import UpNext from '../components/UpNext'
 import Slide from '../components/Slide'
+import { useSelector,useDispatch } from 'react-redux'
+import { getApiConfiguration,getGenres } from '../store/homeSlice'
 
 const Wrapper = styled(Box)`
   display: flex;
@@ -20,11 +22,13 @@ padding: 20px 0;
 
 const Home = () => {
   const [movies, setMovies] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const getData = async () => {
       let response = await categoryMovies(NOWPLAYING_API_URL);
       setMovies(response.results);
+      dispatch(getApiConfiguration(response.results))
     }
     getData();
   },[])
