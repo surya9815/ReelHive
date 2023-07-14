@@ -1,12 +1,20 @@
 import React from 'react'
+import "./style.scss"
 import { useState } from 'react';
 import { AppBar,Toolbar,styled,Box,Typography,InputBase } from '@mui/material'
 // import { logoURL } from '../../constants/constants'
 import { Menu,BookmarkAdd,ExpandMore } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+// Icons
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from '@mui/icons-material/Menu';
 // Compponents
 import HeaderMenu from './HeaderMenu';
 import { routePath } from '../../constants/route';
+// import ContentWrapper
+
+
 
 const StyledToolBar = styled(Toolbar)`
     background: #121212;
@@ -40,6 +48,14 @@ const Logo = styled('img')({
 })
 
 const Header = () => {
+    const [show, setShow] = useState("top")
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [mobileMenu, setMobileMenu] = useState(false);
+    const [query, setQuery] = useState("");
+    const [showSearch, setShowSearch] = useState("");
+    // const navigate = useNavigate();
+    // const location = useLocation();
+
     const [open,setOpen] = useState(null); 
     const handleClick = (e) => {
         setOpen(e.currentTarget);
@@ -48,8 +64,19 @@ const Header = () => {
     const handleClose = () => {
         setOpen(null)
     }
+
+// Search
+    const openSearch = () =>{
+        setMobileMenu(false)
+        setShowSearch(true)
+    }
+    
+    const openMobileMenu = () =>{
+        setMobileMenu(true)
+        setShowSearch(false)
+    }
   return (
-    <AppBar position='static'>
+    <AppBar position='static' className={`header ${mobileMenu ? "mobileView" : ""}${show    }`}>
         <StyledToolBar>
             {/* <img src={logoURL} alt='logo'/> */}
             <Logo src={process.env.PUBLIC_URL + '/ReelHiveLogo.png'} alt="Logo" onClick = {() => navigate(routePath.home)}/>
@@ -69,8 +96,32 @@ const Header = () => {
                 <Typography>En</Typography>
                 <ExpandMore />
             </Box>
-        
+            <div className="mobileMenuItems">
+                <SearchIcon/>
+                {mobileMenu ? (
+                    <CloseIcon onClick={() => setMobileMenu(false)} />
+                ) : (
+                    <MenuIcon onclick={openMobileMenu} />
+                )}
+            </div>
         </StyledToolBar>
+            {/* {showSearch && (
+                    <div className="searchBar">
+                        <ContentWrapper>
+                            <div className="searchInput">
+                                <input
+                                    type="text"
+                                    placeholder="Search for a movie or tv show...."
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    onKeyUp={searchQueryHandler}
+                                />
+                                <VscChromeClose
+                                    onClick={() => setShowSearch(false)}
+                                />
+                            </div>
+                        </ContentWrapper>
+                    </div>
+                )} */}
     </AppBar>
 
   )

@@ -3,7 +3,7 @@ import "./style.scss"
 
 import { Box,Typography,styled,Divider } from '@mui/material'
 import { useEffect,useState } from 'react';
-import Header from '../../components/common/Header'
+import Header from '../../components/header/Header'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useLocation } from 'react-router-dom';
@@ -77,7 +77,7 @@ const CategoryMovies = () => {
     },[search])
   return (
     <>
-        <Header />
+        {/* <Header /> */}
         <Component>
             <Carousel
             responsive={responsive}
