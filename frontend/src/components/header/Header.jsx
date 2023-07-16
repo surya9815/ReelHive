@@ -1,10 +1,10 @@
 import React from 'react'
 import "./style.scss"
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { AppBar,Toolbar,styled,Box,Typography,InputBase } from '@mui/material'
 // import { logoURL } from '../../constants/constants'
 import { Menu,BookmarkAdd,ExpandMore } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 // Icons
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
@@ -12,7 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 // Compponents
 import HeaderMenu from './HeaderMenu';
 import { routePath } from '../../constants/route';
-// import ContentWrapper
+import ContentWrapper from '../contentWrapper/ContentWrapper';
 
 
 
@@ -54,9 +54,14 @@ const Header = () => {
     const [query, setQuery] = useState("");
     const [showSearch, setShowSearch] = useState("");
     // const navigate = useNavigate();
-    // const location = useLocation();
+    const location = useLocation();
 
     const [open,setOpen] = useState(null); 
+    // refresh slider for header 
+    useEffect(() => {
+        window.scrollTo(0,0);
+    },[location])
+
     const handleClick = (e) => {
         setOpen(e.currentTarget);
     }
@@ -75,8 +80,38 @@ const Header = () => {
         setMobileMenu(true)
         setShowSearch(false)
     }
+    // For Header Transition
+    const controlNavbar = () =>{
+        // console.log(window.scrollY);
+        if (window.scrollY > 200) {
+            if (window.scrollY > lastScrollY && !mobileMenu){
+                setShow("hide")
+            } else{
+                setShow("show")
+            }
+        }else {
+            setShow("top")
+        }
+        setLastScrollY(window.scrollY);
+
+    }
+    useEffect(() =>{
+        window.addEventListener("scroll",controlNavbar)
+        return () => {
+            window.removeEventListener("scroll",controlNavbar)
+        }
+    },[lastScrollY])
+
+    const searchQueryHandler = (event) =>{
+        if (event.key === "Enter" && query.length > 0){
+            navigate(`/search/${query}`);
+            setTimeout(() => {
+                setShowSearch(false);
+            },1000);
+        }
+    }
   return (
-    <AppBar position='static' className={`header ${mobileMenu ? "mobileView" : ""}${show    }`}>
+    <AppBar position='static' className={`header ${mobileMenu ? "mobileView" : ""}${show}`}>
         <StyledToolBar>
             {/* <img src={logoURL} alt='logo'/> */}
             <Logo src={process.env.PUBLIC_URL + '/ReelHiveLogo.png'} alt="Logo" onClick = {() => navigate(routePath.home)}/>
@@ -97,7 +132,7 @@ const Header = () => {
                 <ExpandMore />
             </Box>
             <div className="mobileMenuItems">
-                <SearchIcon/>
+                <SearchIcon onClick={openSearch} />
                 {mobileMenu ? (
                     <CloseIcon onClick={() => setMobileMenu(false)} />
                 ) : (
@@ -105,7 +140,7 @@ const Header = () => {
                 )}
             </div>
         </StyledToolBar>
-            {/* {showSearch && (
+            {showSearch && (
                     <div className="searchBar">
                         <ContentWrapper>
                             <div className="searchInput">
@@ -115,13 +150,13 @@ const Header = () => {
                                     onChange={(e) => setQuery(e.target.value)}
                                     onKeyUp={searchQueryHandler}
                                 />
-                                <VscChromeClose
+                                <CloseIcon
                                     onClick={() => setShowSearch(false)}
                                 />
                             </div>
                         </ContentWrapper>
                     </div>
-                )} */}
+                )}
     </AppBar>
 
   )

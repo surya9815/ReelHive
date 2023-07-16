@@ -12,6 +12,12 @@ import Slide from '../../components/Slide'
 // import { useSelector,useDispatch } from 'react-redux'
 // import { getApiConfiguration,getGenres } from '../../store/homeSlice'
 // import HeroBanner from './heroBanner/HeroBanner'
+import Trending from './trending/Trending'
+import Popular from './popular/Popular'
+import TopRated from './topRated/TopRated'
+
+
+
 const Wrapper = styled(Box)`
   display: flex;
   padding: 20px 0;
@@ -56,10 +62,13 @@ const Home = () => {
         <Opacity></Opacity>
           {/* {url?.total_pages} */}
           {/* <HeroBanner/> */}
-        <Slide movies={movies}/>
-        <Slide movies={movies}/>
-        <Slide movies={movies}/>
-        <Slide movies={movies}/>
+        <Trending />
+        <Popular />
+        <TopRated />
+        {/* <Slide movies={movies}/> */}
+        {/* <Slide movies={movies}/> */}
+        {/* <Slide movies={movies}/> */}
+        {/* <Slide movies={movies}/> */}
       </Component>
     </>
     
