@@ -55,15 +55,17 @@ function App() {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path={routePath.home} element={<Home />} />
-        <Route path={routePath.categories} element={<CategoryMovies />} />
-        <Route path={routePath.invalid} element={<Home />} />
-        <Route path={routePath.movieDetails} element={<Details />} />
-        <Route path={routePath.searchResult} element={<SearchResult />} />
-        <Route path={routePath.explore} element={<Explore />} />
-        {/* <Route path={routePath.invalid} element={<PageNotFound />} /> */}
-      </Routes>
+      <div style={{ paddingTop: "45px" }}>
+        <Routes>
+          <Route path={routePath.home} element={<Home />} />
+          <Route path={routePath.categories} element={<CategoryMovies />} />
+          <Route path={routePath.invalid} element={<Home />} />
+          <Route path={routePath.movieDetails} element={<Details />} />
+          <Route path={routePath.searchResult} element={<SearchResult />} />
+          <Route path={routePath.explore} element={<Explore />} />
+        </Routes>
+      </div>
+
       <Footer />
     </Router>
   );

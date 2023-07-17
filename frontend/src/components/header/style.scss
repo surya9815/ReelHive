@@ -32,6 +32,9 @@
         img {
             height: 50px;
         }
+        @include md {
+            order: -1;
+          }
     }
     .menuItems {
         list-style-type: none;
@@ -39,6 +42,8 @@
         align-items: center;
         @include md {
             display: flex;
+            justify-content: space-between;
+            flex-grow: 1
         }
         .menuItem {
             height: 60px;
@@ -65,15 +70,25 @@
         display: flex;
         align-items: center;
         gap: 20px;
+        // order: -2;
         @include md {
             display: none;
+            
         }
+        // .slMenuIcon {
+        //     order: -2;
+        //   }
+        // >:last-child {
+        //     // display: none;
+        //     // order: 1;
+        //     margin-left: auto;
+
+        // }
         svg {
             font-size: 18px;
             color: white;
         }
     }
-
     &.mobileView {
         background: var(--black3);
         .menuItems {

@@ -3,8 +3,9 @@ import React,{useState} from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
-import { PlayIcon } from '../pages/moviedetails/Playbtn';
-import VideoPopup from './videoPopup/VideoPopup';
+import { PlayIcon } from '../../pages/moviedetails/Playbtn';
+import VideoPopup from '../videoPopup/VideoPopup';
+import "./style.scss";
 
 const responsive = {
     superLargeDesktop: {
@@ -41,6 +42,7 @@ const Banner = ({ movies }) => {
   const navigate = useNavigate();
   const PosterBlock = ({ movie,video }) => {
     const posterUrl = `http://image.tmdb.org/t/p/w200/${movie.poster_path}`;
+    // console.log(movie.video)
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
   
@@ -48,26 +50,38 @@ const Banner = ({ movies }) => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: '20px',
-          left: '20px',
-          width: '300px',
+          up:'5%',
+          bottom: '1%',
+          left: '5%',
+          width: '27%',
           display: 'flex',
           alignItems: 'flex-end',
           '& .textBlock': {
             color: 'white',
             display: 'flex',
             flexDirection: 'column',
+            alignItems: 'flex-start',
             '& .title': {
-              fontSize: '16px',
-              marginBottom: '10px',
-              lineHeight: '24px',
+              fontSize: '4vw',
+              // marginBottom: '10px',
+              // lineHeight: '3vh',
+              whiteSpace: 'break-spaces',
+              // overflowWrap: 'break-word',
+              // wordBreak: 'break-word',
+              // maxWidth: '60%',
+              alignItems: 'flex-start',
+
+
             },
             '& .playbtn': {
+              // marginLeft: '2vw',
               display: 'flex',
               alignItems: 'center',
               cursor: 'pointer',
               '& .text': {
-                marginLeft: '5px',
+                fontSize: '3vw',
+                // marginLeft: '1vw',
+                whiteSpace: 'nowrap',
               },
             },
           },
@@ -77,9 +91,9 @@ const Banner = ({ movies }) => {
           src={posterUrl}
           alt='poster'
           style={{
-            width: '60px',
-            height: '90px',
-            marginRight: '10px',
+            width: '80%',
+            height: 'auto',
+            marginRight: '15%',
             borderRadius: '12px',
           }}
         />
@@ -92,7 +106,7 @@ const Banner = ({ movies }) => {
               setVideoId(video.key);
             }}
           >
-            <PlayIcon />
+          <PlayIcon />
             <span className="text">Watch Trailer</span>
           </div>
         </div>
@@ -131,14 +145,15 @@ const Banner = ({ movies }) => {
         // itemClass="carousel-item-padding-40-px"
         >
         {
-            movies?.map(movie => (
-              <Box key={movie.id} >
+          movies?.map(movie => (
+            <Box key={movie.id} >
                 <StyledBanner src={`http://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt='banner' onClick={() => navigate(`/movie/${movie.id}`)} /> 
                 <Opacity></Opacity>
                 
                 <PosterBlock movie={movie} video={movie.video} />
               </Box>
             ))
+            // {{console.log(movie)}}
         }
         </Carousel>
 

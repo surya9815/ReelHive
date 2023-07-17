@@ -6,7 +6,7 @@ import { useEffect,useState } from 'react'
 import { categoryMovies } from '../../services/api'
 import { NOWPLAYING_API_URL } from '../../constants/constants'
 import { Box,styled } from '@mui/material'
-import Banner from '../../components/Banner'
+import Banner from '../../components/homeBanner/Banner'
 import UpNext from '../../components/UpNext'
 // import Slide from '../../components/Slide'
 // import { useSelector,useDispatch } from 'react-redux'
@@ -17,15 +17,14 @@ import Popular from './popular/Popular'
 import TopRated from './topRated/TopRated'
 
 
-
 const Wrapper = styled(Box)`
   display: flex;
   padding: 20px 0;
   position: relative;
-`
+  `
 const Component = styled(Box)`
-padding: 0 115px !important
-padding: 20px 0;
+  padding: 0 115px !important
+  padding: 20px 0; 
   
 `
 // const Opacity = styled('div')({
