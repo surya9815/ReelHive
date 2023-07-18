@@ -144,12 +144,17 @@
     color: rgba(156, 163, 175, 1);
   }
   .divider {
-    width: 1px;
-    flex: 0 0 1px;
-    background-color: white;
-    margin-left: 10%;
+    display: none;
+  
+    @media screen and (min-width: 768px) {
+      display: block;
+      width: 1px;
+      flex: 0 0 1px;
+      background-color: white;
+      margin-left: 10%;
     // margin-right: 10%;
     margin-right: 20px; /* Adjust the spacing as desired */
+    }
   }
   .paragraph {
     margin-bottom: 8px; /* Adjust the margin-bottom value as desired */

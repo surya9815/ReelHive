@@ -40,7 +40,7 @@ const Opacity = styled('div')({
 });
 const Banner = ({ movies }) => {
   const navigate = useNavigate();
-  const PosterBlock = ({ movie,video }) => {
+  const PosterBlock = ({ movie }) => {
     const posterUrl = `http://image.tmdb.org/t/p/w200/${movie.poster_path}`;
     // console.log(movie.video)
     // const [show, setShow] = useState(false);
@@ -62,15 +62,12 @@ const Banner = ({ movies }) => {
             flexDirection: 'column',
             alignItems: 'flex-start',
             '& .title': {
-              fontSize: '4vw',
+              fontSize: '3vw',
               // marginBottom: '10px',
-              // lineHeight: '3vh',
-              whiteSpace: 'break-spaces',
+              lineHeight: '5vh',
+              // whiteSpace: 'break-spaces',
               alignItems: 'flex-start',
               cursor: 'pointer',
-
-
-
             },
             '& .playbtn': {
               // marginLeft: '2vw',
@@ -78,7 +75,7 @@ const Banner = ({ movies }) => {
               alignItems: 'center',
               cursor: 'pointer',
               '& .text': {
-                fontSize: '3vw',
+                fontSize: '2vw',
                 // marginLeft: '1vw',
                 whiteSpace: 'nowrap',
               },
@@ -97,7 +94,7 @@ const Banner = ({ movies }) => {
           }}
         />
         <div className="textBlock">
-          <h3 className="title">{movie.title}</h3>
+          {/* <h3 className="title">{movie.title}</h3> */}
           <div
             className="playbtn"
             // onClick={() => {
@@ -106,7 +103,8 @@ const Banner = ({ movies }) => {
             // }}
           >
           <PlayIcon />
-            <span className="text">Watch Details</span>
+            <span className="text">{movie.title}</span>
+            {/* <span className="text">Watch Details</span> */}
           </div>
         </div>
         {/* <VideoPopup
@@ -122,7 +120,7 @@ const Banner = ({ movies }) => {
 
   return (
     // <Box style={{ width: '100%' }}>
-    <Box sx={{ width: {xs:'100%',md: '65%' }}}>
+    <Box sx={{ marginLeft: { md: '5%' }, width: {xs:'100%',md: '60%' }}}>
         <Carousel
         responsive={responsive}
         swipeable={false}

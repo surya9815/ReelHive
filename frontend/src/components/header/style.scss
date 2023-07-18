@@ -29,12 +29,11 @@
     }
     .logo {
         cursor: pointer;
+        
         img {
             height: 50px;
         }
-        @include md {
-            order: -1;
-          }
+
     }
     .menuItems {
         list-style-type: none;
@@ -43,8 +42,12 @@
         @include md {
             display: flex;
             justify-content: space-between;
-            flex-grow: 1
+            flex: 1;
+            .menuItem:nth-last-child(-n+3) {
+                display: none;
+              }
         }
+
         .menuItem {
             height: 60px;
             display: flex;
@@ -53,9 +56,7 @@
             color: white;
             font-weight: 500;
             position: relative;
-            &.searchIcon {
-                margin-right: 0;
-            }
+            margin-left: 10px;
             svg {
                 font-size: 18px;
             }
@@ -102,6 +103,7 @@
             padding: 20px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             animation: mobileMenu 0.3s ease forwards;
+            
             .menuItem {
                 font-size: 20px;
                 width: 100%;
@@ -115,6 +117,7 @@
                     display: none;
                 }
             }
+
         }
     }
 

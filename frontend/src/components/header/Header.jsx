@@ -5,6 +5,7 @@ import { AppBar, Toolbar, styled, Box, Typography, InputBase } from '@mui/materi
 import { BookmarkAdd, ExpandMore, Menu as MenuIcon } from '@mui/icons-material';
 import { VscChromeClose } from "react-icons/vsc";
 import { useNavigate, useLocation } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
 
 import "./style.scss";
 
@@ -14,13 +15,25 @@ import ContentWrapper from "../contentWrapper/ContentWrapper";
 const InputSearchField = styled(InputBase)`
   background: #FFFFFF;
   height: 30px;
-  width: 100%;
-  border-radius: 5px;
-  @media (min-width: 768px) {
-    width: 75%;
+  width: 90%;
+  border-radius: 5px 0 0 5px;
+  padding: 15px 20px;
+  margin-left: 10px;
+
   }
 `;
-
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+    color: '#C4C4C4', // Set the color to light grey
+    backgroundColor: '#FFFFFF', // Set the background color to white
+    borderRadius: '0 5px 5px 0', // Set round edges on the right side
+    padding: theme.spacing(0, 2),
+    height: '30px',
+    // position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+  }));
 const Header = () => {
     const [show, setShow] = useState("top");
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -62,7 +75,14 @@ const Header = () => {
             }, 1000);
         }
     };
-
+    const searchIconQueryHandler = () => {
+        if (query.length > 0) {
+          navigate(`/search/${query}`);
+          setTimeout(() => {
+            setShowSearch(false);
+          }, 1000);
+        }
+      };
     const openSearch = () => {
         setMobileMenu(false);
         setShowSearch(true);
@@ -90,28 +110,30 @@ const Header = () => {
                     <img src={process.env.PUBLIC_URL + '/ReelHiveLogo.png'} alt="" />
                 </div>
                 <ul className="menuItems">
-                    <li className="menuItem">
-                    <Box flexGrow={1} display={{ xs: "none", md: "block" }}>
+                    {/* <li className="menuItem"> */}
+                    <Box flexGrow={1} display={{ xs: "none", sm: "flex" }}>
                         <InputSearchField
                             placeholder="Search for a movie or tv show...."
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             onKeyUp={searchQueryHandler}
                         />
+                          <SearchIconWrapper onClick={searchIconQueryHandler}>
+                            <SearchIcon sx={{ color: '#C4C4C4' }} />
+                        </SearchIconWrapper>
+                        {/* <SearchIcon sx={{ color: 'white', position: 'absolute', top: '50%', transform: 'translateY(-50%)' }} /> */}
+                    {/* <HiOutlineSearch /> */}
                     </Box>
-                    </li>
-                    <li className="menuItem">
-                         <BookmarkAdd />
+                    {/* </li> */}
+                    <li className="menuItem" onClick={() => navigate("/signIn")}>
+                         <BookmarkAdd />    
                          <Typography>Watchlist</Typography>
                     </li>
-                    <li className="menuItem">
+                    <li className="menuItem" onClick={() => navigate("/signIn")}>
                         <Typography>Sign In</Typography>
                     </li>
-                    <li className="menuItem">
-                        <Box>
-                            <Typography>En</Typography>
-                            <ExpandMore />
-                        </Box>
+                    <li className="menuItem" onClick={() => navigate("/signUp")}>
+                        <Typography>Sign Up</Typography>
                     </li>
                     <li
                         className="menuItem"
