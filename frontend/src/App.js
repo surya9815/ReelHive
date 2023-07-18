@@ -8,6 +8,7 @@ import CategoryMovies from "./pages/details/CategoryMovies";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Footer from "./components/footer/Footer";
 import Explore from "./pages/explore/Explore";
+import SignInPage from "./pages/signIn/SignInPage";
 // import PageNotFound from "./pages/404/PageNotFound";
 import Details from "./pages/moviedetails/Details";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -15,6 +16,7 @@ import { routePath } from "./constants/route";
 import Header from "./components/header/Header";
 import { fetchDataFromApi } from "./services/api";
 import { getApiConfiguration, getGenres } from "./store/homeSlice";
+import SignUpPage from "./pages/signUp/SignUp";
 function App() {
   const dispatch = useDispatch();
   const { url } = useSelector((state) => state.home);
@@ -40,18 +42,18 @@ function App() {
   };
   const genresCall = async () => {
     let promises = [];
-    let endPoints = ["tv","movie"];
-    let allGenres = {}
+    let endPoints = ["tv", "movie"];
+    let allGenres = {};
 
     endPoints.forEach((url) => {
-      promises.push(fetchDataFromApi(`/genre/${url}/list`))
-    })
-    const data = await Promise.all(promises)
-    data.map(({genres}) => {
-      return genres.map((item) => (allGenres[item.id] = item))
+      promises.push(fetchDataFromApi(`/genre/${url}/list`));
     });
-    dispatch(getGenres(allGenres))
-  }
+    const data = await Promise.all(promises);
+    data.map(({ genres }) => {
+      return genres.map((item) => (allGenres[item.id] = item));
+    });
+    dispatch(getGenres(allGenres));
+  };
   return (
     <Router>
       <Header />
@@ -63,6 +65,8 @@ function App() {
           <Route path={routePath.movieDetails} element={<Details />} />
           <Route path={routePath.searchResult} element={<SearchResult />} />
           <Route path={routePath.explore} element={<Explore />} />
+          <Route path={routePath.signIn} element={<SignInPage />} />
+          <Route path={routePath.signUp} element={<SignUpPage />} />
         </Routes>
       </div>
 

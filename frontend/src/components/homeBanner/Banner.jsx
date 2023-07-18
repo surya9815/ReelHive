@@ -1,10 +1,10 @@
 import { Box,styled } from '@mui/material';
-import React,{useState} from 'react'
+import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
 import { PlayIcon } from '../../pages/moviedetails/Playbtn';
-import VideoPopup from '../videoPopup/VideoPopup';
+// import VideoPopup from '../videoPopup/VideoPopup';
 import "./style.scss";
 
 const responsive = {
@@ -43,8 +43,8 @@ const Banner = ({ movies }) => {
   const PosterBlock = ({ movie,video }) => {
     const posterUrl = `http://image.tmdb.org/t/p/w200/${movie.poster_path}`;
     // console.log(movie.video)
-    const [show, setShow] = useState(false);
-    const [videoId, setVideoId] = useState(null);
+    // const [show, setShow] = useState(false);
+    // const [videoId, setVideoId] = useState(null);
   
     return (
       <Box
@@ -66,10 +66,9 @@ const Banner = ({ movies }) => {
               // marginBottom: '10px',
               // lineHeight: '3vh',
               whiteSpace: 'break-spaces',
-              // overflowWrap: 'break-word',
-              // wordBreak: 'break-word',
-              // maxWidth: '60%',
               alignItems: 'flex-start',
+              cursor: 'pointer',
+
 
 
             },
@@ -101,21 +100,21 @@ const Banner = ({ movies }) => {
           <h3 className="title">{movie.title}</h3>
           <div
             className="playbtn"
-            onClick={() => {
-              setShow(true);
-              setVideoId(video.key);
-            }}
+            // onClick={() => {
+            //   setShow(true);
+            //   setVideoId(video.key);
+            // }}
           >
           <PlayIcon />
-            <span className="text">Watch Trailer</span>
+            <span className="text">Watch Details</span>
           </div>
         </div>
-        <VideoPopup
+        {/* <VideoPopup
           show={show}
           setShow={setShow}
           videoId={videoId}
           setVideoId={setVideoId}
-        />
+        /> */}
       </Box>
     );
   };
@@ -146,11 +145,11 @@ const Banner = ({ movies }) => {
         >
         {
           movies?.map(movie => (
-            <Box key={movie.id} >
-                <StyledBanner src={`http://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt='banner' onClick={() => navigate(`/movie/${movie.id}`)} /> 
-                <Opacity></Opacity>
+            <Box key={movie?.id} onClick={() => navigate(`/movie/${movie.id}`)}>
+                <StyledBanner src={`http://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt='banner'  /> 
+                <Opacity />
                 
-                <PosterBlock movie={movie} video={movie.video} />
+                <PosterBlock movie={movie} />
               </Box>
             ))
             // {{console.log(movie)}}

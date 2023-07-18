@@ -7,4 +7,6 @@ export const routePath = {
   movieDetails: `${APP_PATH}/:mediaType/:id`,
   searchResult: `${APP_PATH}/search/:query`,
   explore: `${APP_PATH}/explore/:mediaType`,
+  signIn: `${APP_PATH}/signin`,
+  signUp: `${APP_PATH}/signup`,
 };
