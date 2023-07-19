@@ -38,7 +38,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
         return (
             <div className="skeletonItem">
                 <div className="posterBlock skeleton"></div>
-                <div className="textBlock">
+                <div className="textCBlock">
                     <div className="title skeleton"></div>
                     <div className="date skeleton"></div>
                 </div>
@@ -87,8 +87,8 @@ const Carousel = ({ data, loading, endpoint, title }) => {
                                             data={item.genre_ids.slice(0, 2)}
                                         />
                                     </div>
-                                    <div className="textBlock">
-                                        <span className="title">
+                                    <div className="textCBlock">
+                                        <span className="titleC">
                                             {item.title || item.name}
                                         </span>
                                         <span className="date">

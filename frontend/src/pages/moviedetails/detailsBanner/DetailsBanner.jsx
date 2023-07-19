@@ -13,9 +13,15 @@ import Img from "../../../components/lazyLoadImage/Img.jsx";
 import PosterFallback from "../../../no-poster.png";
 import { PlayIcon } from "../Playbtn";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";
+// import RatingStar from "../RatingStar";
+// import RatingCard from "../RatingCard"
+import RatingPopup from "../ratingPopup/RatingPopup";
+
 
 const DetailsBanner = ({ video, crew }) => {
+    // Modal
     const [show, setShow] = useState(false);
+ 
     const [videoId, setVideoId] = useState(null);
 
     const { mediaType, id } = useParams();
@@ -35,6 +41,7 @@ const DetailsBanner = ({ video, crew }) => {
         const minutes = totalMinutes % 60;
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
     };
+
 
     return (
         <div className="detailsBanner">
@@ -65,7 +72,7 @@ const DetailsBanner = ({ video, crew }) => {
                                         )}
                                     </div>
                                     <div className="right">
-                                        <div className="title">
+                                        <div className="rtitle">
                                             {`${
                                                 data.name || data.title
                                             } (${dayjs(
@@ -95,7 +102,13 @@ const DetailsBanner = ({ video, crew }) => {
                                                 <span className="text">
                                                     Watch Trailer
                                                 </span>
+
                                             </div>
+
+                                            <RatingPopup movie={data}/>
+
+                                            
+
                                         </div>
 
                                         <div className="overview">

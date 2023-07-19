@@ -63,7 +63,7 @@
         }
         .right {
             color: white;
-            .title {
+            .rtitle {
                 font-size: 28px;
                 line-height: 40px;
                 @include md {
@@ -153,6 +153,7 @@
                     }
                 }
             }
+              
             .row {
                 display: flex;
                 align-items: center;

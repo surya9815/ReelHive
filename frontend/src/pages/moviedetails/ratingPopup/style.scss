@@ -1,0 +1,131 @@
+@import "../../../mixins.scss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+body {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: 'Poppins', sans-serif;
+  background: #37353b;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  background: #1a1a1a;
+  color: #f9f9f9;
+  border: 0;
+  border-radius: 8px;
+  padding: 20px 36px;
+  font-size: 16px;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  background: #37353b;
+  color: #f9f9f9;
+  padding: 48px 40px;
+  width: 300px;
+  border-radius: 12px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-weight: 400;
+  font-size: 21px;
+}
+
+p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+                        
+.card {
+    width: 300px;
+    height: 220px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px;
+    gap: 13px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.062);
+  
+    #cookieSvg {
+      width: 50px;
+  
+      g path {
+        fill: #615151;
+      }
+    }
+  
+    .cookieHeading {
+      font-size: 2vh;
+      font-weight: 800;
+      color: #1a1a1a;
+    }
+  
+    .cookieDescription {
+      text-align: center;
+      font-size: 3vh;
+      font-weight: 800;
+      color: #636363;
+  
+      a {
+        --tw-text-opacity: 1;
+        color: #3b82f6;
+  
+        &:hover {
+          -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+        }
+      }
+    }
+  
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-direction: row;
+    }
+  
+    .acceptButton {
+        display: flex; /* Added */
+        justify-content: center; /* Added */
+        align-items: center; /* Added */
+        width: 120px;
+        height: 40px;
+        background-color: #7b57ff;
+        transition-duration: 0.2s;
+        border: none;
+        color: #f1f1f1;
+        cursor: pointer;
+        font-weight: 500;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px -1px #977ef3, 0 2px 4px -1px #977ef3;
+        transition: all 0.6s ease;
+      
+        &:hover {
+          background-color: #9173ff;
+          box-shadow: 0 10px 15px -3px #977ef3, 0 4px 6px -2px #977ef3;
+          transition-duration: 0.2s;
+        }
+      }
+    }
