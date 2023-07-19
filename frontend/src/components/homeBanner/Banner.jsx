@@ -78,6 +78,8 @@ const Banner = ({ movies }) => {
                 fontSize: '2vw',
                 // marginLeft: '1vw',
                 whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
               },
             },
           },

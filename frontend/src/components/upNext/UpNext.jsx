@@ -12,7 +12,7 @@ const Component  = styled(Box)`
     align-items: baseline;
     padding-left: 20px;
     & > p {
-        color: #F5C518;
+        color: white;
         font-weight: 18px;
         margin-bottom: 10px;
     }
@@ -24,7 +24,7 @@ const Poster = styled('img')({
 })
 
 const Wrapper = styled(Box)`
-  color: #ffffff;
+  color: white;
   display: flex;
   align-items: center;
   margin-bottom: 10px;

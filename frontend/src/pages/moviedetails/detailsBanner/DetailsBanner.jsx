@@ -99,9 +99,9 @@ const DetailsBanner = ({ video, crew }) => {
                                                 }}
                                             >
                                                 <PlayIcon />
-                                                <span className="text">
+                                                {/* <span className="text">
                                                     Watch Trailer
-                                                </span>
+                                                </span> */}
 
                                             </div>
 
