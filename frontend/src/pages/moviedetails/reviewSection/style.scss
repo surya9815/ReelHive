@@ -1,0 +1,70 @@
+@import "../../../mixins.scss";
+
+.reviewSection {
+  position: relative;
+  margin-bottom: 50px;
+  
+  .sectionHeading {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 25px;
+  }
+  
+  .reviewBoxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    .reviewBox {
+      background-color: #041226;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      position: relative;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%);
+      }
+
+      .rating {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 3px 6px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center; /* Align the star icon vertically */
+      }
+      .reviewTitle {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffffff;
+        margin-bottom: 10px;
+      }
+
+      .reviewContent {
+        font-size: 14px;
+        color: #ffffff;
+        margin-bottom: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Show up to 3 lines of text */
+        -webkit-box-orient: vertical;
+      }
+
+      .reviewAuthor {
+        font-size: 12px;
+        color: #ffffff;
+      }
+    }
+  }
+}
